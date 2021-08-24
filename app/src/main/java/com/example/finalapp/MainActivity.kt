@@ -25,27 +25,32 @@ class MainActivity : AppCompatActivity() {
     fun makeSound(view: View) {
         var case = (0..777).random()
         when(case) {
-           in 0..200 -> toast("${charactersList[indexList!!].Nombre} esta dormido en clase")
-            in 201..500 -> toast("${charactersList[indexList!!].Nombre} esta jugando Leage of Legend")
-            in 501..777 -> toast("${charactersList[indexList!!].Nombre} ya reprobo por faltas")
+            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} tiene hambre", Toast.LENGTH_LONG).show()
+            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} ha derrotado un enemigo", Toast.LENGTH_LONG).show()
+            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} se ha teletransportado", Toast.LENGTH_LONG).show()
+
+            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} tiene hambre", Toast.LENGTH_LONG).show()
         }
+
     }
 
     fun play(view: View) {
         var case = (0..777).random()
         when(case) {
-            in 0..200 -> toast("${charactersList[indexList!!].Nombre} tiene una duda acerca de la herencia en kotlin")
-            in 201..500 -> toast("${charactersList[indexList!!].Nombre} no asistio a clase hoy")
-            in 501..777 -> toast("${charactersList[indexList!!].Nombre} no le gusta la materia")
+            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} ha lanzado su ataque", Toast.LENGTH_LONG).show()
+            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} se defendió", Toast.LENGTH_LONG).show()
+            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} golpeó a un enemigo", Toast.LENGTH_LONG).show()
+            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} golpeó a un enemigo", Toast.LENGTH_LONG).show()
         }
     }
 
     fun eat(view: View) {
         var case = (0..777).random()
         when(case) {
-            in 0..200 -> toast("${charactersList[indexList!!].Nombre} esta comiendo un woke")
-            in 201..500 -> toast("${charactersList[indexList!!].Nombre} esta comiendo ensalada")
-            in 501..777 -> toast("${charactersList[indexList!!].Nombre} no esta comiendo nada")
+            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} dice hola", Toast.LENGTH_LONG).show()
+            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha atacado", Toast.LENGTH_LONG).show()
+            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha ayudado", Toast.LENGTH_LONG).show()
+            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha ayudado", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -81,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             indexList = indexList!! +1
         }
 
-        toast("El personaje es: ${character.Nombre}")
+        Toast.makeText(this, "El personaje es: ${character.Nombre}", Toast.LENGTH_LONG).show()
         txvInfo.text = "nombre: ${character.Nombre}\npoder: ${character.Poder}\nraza: ${character.Raza}\n"
     }
 
@@ -94,7 +99,4 @@ class MainActivity : AppCompatActivity() {
         txvInfo.text = "nombre: ${charactersList[indexList!!].Nombre}\npoder: ${charactersList[indexList!!].Poder}\nraza: ${charactersList[indexList!!].Raza}\n"
     }
 
-    private fun toast(message: String) {
-        Toast.makeText(this, message + indexList, Toast.LENGTH_LONG).show()
-    }
 }
