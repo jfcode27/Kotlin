@@ -23,35 +23,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun makeSound(view: View) {
-        var case = (0..777).random()
-        when(case) {
-            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} tiene hambre", Toast.LENGTH_LONG).show()
-            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} ha derrotado un enemigo", Toast.LENGTH_LONG).show()
-            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} se ha teletransportado", Toast.LENGTH_LONG).show()
-
-            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} tiene hambre", Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(this, charactersList[indexList!!].getInfo(), Toast.LENGTH_LONG).show()
 
     }
 
     fun play(view: View) {
-        var case = (0..777).random()
-        when(case) {
-            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} ha lanzado su ataque", Toast.LENGTH_LONG).show()
-            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} se defendió", Toast.LENGTH_LONG).show()
-            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} golpeó a un enemigo", Toast.LENGTH_LONG).show()
-            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} golpeó a un enemigo", Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(this, charactersList[indexList!!].play(), Toast.LENGTH_LONG).show()
     }
 
     fun eat(view: View) {
-        var case = (0..777).random()
-        when(case) {
-            in 0..200 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} dice hola", Toast.LENGTH_LONG).show()
-            in 201..500 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha atacado", Toast.LENGTH_LONG).show()
-            in 501..777 -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha ayudado", Toast.LENGTH_LONG).show()
-            else -> Toast.makeText(this, "${charactersList[indexList!!].Nombre} te ha ayudado", Toast.LENGTH_LONG).show()
-        }
+        Toast.makeText(this, charactersList[indexList!!].eat(), Toast.LENGTH_LONG).show()
     }
 
     fun getPreviousPet(view: View) {
@@ -62,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             indexList = indexList!!-1
         }
-        txvInfo.text = "nombre: ${charactersList[indexList!!].Nombre}\npoder: ${charactersList[indexList!!].Poder}\nraza: ${charactersList[indexList!!].Raza}\n"
+        txvInfo.text = charactersList[indexList!!].getInfo()
 
     }
 
@@ -70,12 +51,12 @@ class MainActivity : AppCompatActivity() {
         var case = (0..777).random()
         var character: Characters
         when(case) {
-            in 0..100 -> character = Characters("Son Goku", "Kame Hame Ha", "Saiyajin")
-            in 101..200 -> character = Characters("Son Gohan", "Masenko", "Mestizo")
-            in 201..300 -> character = Characters("Mastro Roshi", "Mafuba", "Humano")
-            in 301..400 -> character = Characters("Piccolo", "Makankosappo", "Namekuseijin")
-            in 401..777 -> character = Characters("Vegeta", "Galick Canyon", null)
-            else -> character = Characters("Freezer", "Supernova", "Furīza-zoku")
+            in 0..100 -> character = Hero("Son Goku", "Kame Hame Ha", "Saiyajin")
+            in 101..200 -> character = Hero("Son Gohan", "Masenko", "Mestizo")
+            in 201..300 -> character = Hero("Mastro Roshi", "Mafuba", "Humano")
+            in 301..400 -> character = Villain("Piccolo", "Makankosappo", "Namekuseijin")
+            in 401..777 -> character = Villain("Vegeta", "Galick Canyon", null)
+            else -> character = Villain("Freezer", "Supernova", "Furīza-zoku")
         }
 
         var newArray = arrayOf<Characters>(*charactersList, character)
@@ -86,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             indexList = indexList!! +1
         }
 
-        Toast.makeText(this, "El personaje es: ${character.Nombre}", Toast.LENGTH_LONG).show()
-        txvInfo.text = "nombre: ${character.Nombre}\npoder: ${character.Poder}\nraza: ${character.Raza}\n"
+        Toast.makeText(this, charactersList[indexList!!].getInfo(), Toast.LENGTH_LONG).show()
+        txvInfo.text = charactersList[indexList!!].getInfo()
     }
 
     fun getNextPet(view: View) {
@@ -96,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             indexList = indexList!! +1
         }
-        txvInfo.text = "nombre: ${charactersList[indexList!!].Nombre}\npoder: ${charactersList[indexList!!].Poder}\nraza: ${charactersList[indexList!!].Raza}\n"
+        txvInfo.text = charactersList[indexList!!].getInfo()
     }
 
 }
